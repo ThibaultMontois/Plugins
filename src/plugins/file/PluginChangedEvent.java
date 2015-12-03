@@ -4,11 +4,11 @@ import java.io.File;
 
 import plugins.Plugin;
 
-public class PluginEvent {
+public class PluginChangedEvent {
 
 	private Plugin plugin;
 
-	public PluginEvent(File source) {
+	public PluginChangedEvent(File source) {
 		this.plugin = this.toPlugin(source);
 	}
 
@@ -18,8 +18,8 @@ public class PluginEvent {
 
 	private Plugin toPlugin(File source) {
 		String filename = source.getName();
-		filename = filename.substring(0, filename.length() - 6);
-		Class<?> classFile = null;
+		filename = filename.substring(0, filename.indexOf(".class"));
+		Class<?> classFile;
 		try {
 			classFile = Class.forName("plugins." + filename);
 			return (Plugin) classFile.newInstance();

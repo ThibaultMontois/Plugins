@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import plugins.Plugin;
 import plugins.editor.PluginFrame;
 
-public class EventListener implements ActionListener {
+public class PluginEventListener implements ActionListener {
 
 	private PluginFrame frame;
 	private Plugin plugin;
 
-	public EventListener(PluginFrame frame, Plugin plugin) {
+	public PluginEventListener(PluginFrame frame, Plugin plugin) {
 		super();
 		this.frame = frame;
 		this.plugin = plugin;

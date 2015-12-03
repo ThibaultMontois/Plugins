@@ -23,7 +23,7 @@ public class PluginFilter implements FilenameFilter {
 	private boolean isAPlugin(String file) throws ClassNotFoundException,
 			NoSuchMethodException, SecurityException {
 		if (file.toLowerCase().endsWith(".class")) {
-			String fileName = file.substring(0, file.length() - 6);
+			String fileName = file.substring(0, file.indexOf(".class"));
 			Class<?> classFile = Class.forName("plugins." + fileName);
 			return this.implementsPlugin(classFile)
 					&& this.belongsToThePluginsPackage(classFile)

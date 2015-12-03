@@ -9,37 +9,44 @@ public class PluginFinder {
 	private File directory;
 	private PluginFilter filter;
 	private List<File> plugins;
-	private List<PluginListener> listeners;
+	private List<PluginChangedListener> listeners;
 
 	public PluginFinder(String directory) {
 		this.directory = new File(directory);
 		this.filter = new PluginFilter();
 		this.plugins = new LinkedList<File>();
-		this.listeners = new LinkedList<PluginListener>();
+		this.listeners = new LinkedList<PluginChangedListener>();
 	}
 
-	public void addListener(PluginListener listener) {
+	public void addListener(PluginChangedListener listener) {
 		this.listeners.add(listener);
 	}
 
+	private void firePluginRemoved(File plugin) {
+		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		for (PluginChangedListener listener : this.listeners)
+			listener.removePlugin(event);
+	}
+
+	private void firePluginAdded(File plugin) {
+		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		for (PluginChangedListener listener : this.listeners)
+			listener.addPlugin(event);
+	}
+
 	private void handlePlugins(File[] plugins) {
-		PluginEvent event;
-		List<File> oldPlugins = new LinkedList<File>(this.plugins);
-		this.plugins.clear();
-		for (int i = 0; i < plugins.length; i++) {
-			if (oldPlugins.contains(plugins[i]))
-				oldPlugins.remove(plugins[i]);
+		List<File> pluginsToRemove = new LinkedList<File>(this.plugins);
+		for (File plugin : plugins) {
+			if (this.plugins.contains(plugin))
+				pluginsToRemove.remove(plugin);
 			else {
-				event = new PluginEvent(plugins[i]);
-				for (PluginListener listener : this.listeners)
-					listener.addedLogger(event);
+				this.firePluginAdded(plugin);
+				this.plugins.add(plugin);
 			}
-			this.plugins.add(plugins[i]);
 		}
-		for (File file : oldPlugins) {
-			event = new PluginEvent(file);
-			for (PluginListener listener : this.listeners)
-				listener.removedLogger(event);
+		for (File plugin : pluginsToRemove) {
+			this.firePluginRemoved(plugin);
+			this.plugins.remove(plugin);
 		}
 	}
 
