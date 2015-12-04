@@ -17,6 +17,14 @@ public class PluginEventListener implements ActionListener {
 		this.plugin = plugin;
 	}
 
+	public PluginFrame getFrame() {
+		return this.frame;
+	}
+
+	public Plugin getPlugin() {
+		return this.plugin;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String input = this.frame.getInput().getText();

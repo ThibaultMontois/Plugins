@@ -18,20 +18,30 @@ public class PluginFinder {
 		this.listeners = new LinkedList<PluginChangedListener>();
 	}
 
+	public File getDirectory() {
+		return this.directory;
+	}
+
+	public void setDirectory(String directory) {
+		this.directory = new File(directory);
+	}
+
+	public List<File> getPlugins() {
+		return this.plugins;
+	}
+
+	public List<PluginChangedListener> getListeners() {
+		return this.listeners;
+	}
+
 	public void addListener(PluginChangedListener listener) {
 		this.listeners.add(listener);
 	}
 
-	private void firePluginRemoved(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(plugin);
-		for (PluginChangedListener listener : this.listeners)
-			listener.removePlugin(event);
-	}
-
-	private void firePluginAdded(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(plugin);
-		for (PluginChangedListener listener : this.listeners)
-			listener.addPlugin(event);
+	public void checkPlugins() {
+		File[] plugins = this.directory.listFiles(this.filter);
+		if (plugins != null)
+			this.handlePlugins(plugins);
 	}
 
 	private void handlePlugins(File[] plugins) {
@@ -50,10 +60,16 @@ public class PluginFinder {
 		}
 	}
 
-	public void checkPlugins() {
-		File[] plugins = this.directory.listFiles(this.filter);
-		if (plugins != null)
-			this.handlePlugins(plugins);
+	private void firePluginAdded(File plugin) {
+		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		for (PluginChangedListener listener : this.listeners)
+			listener.addPlugin(event);
+	}
+
+	private void firePluginRemoved(File plugin) {
+		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		for (PluginChangedListener listener : this.listeners)
+			listener.removePlugin(event);
 	}
 
 }

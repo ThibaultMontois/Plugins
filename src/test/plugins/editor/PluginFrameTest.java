@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import plugins.editor.PluginFrame;
+import test.plugins.mock.PluginFrameMock;
 
 public class PluginFrameTest {
 
@@ -13,7 +14,7 @@ public class PluginFrameTest {
 
 	@Before
 	public void createPluginFrame() {
-		this.frame = new PluginFrame();
+		this.frame = new PluginFrameMock();
 		assertNotNull(this.frame);
 	}
 

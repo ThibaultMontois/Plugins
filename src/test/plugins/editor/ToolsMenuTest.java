@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import javax.swing.JMenuItem;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.swing.JMenuItem;
 
 import plugins.editor.ToolsMenu;
 
@@ -28,19 +28,14 @@ public class ToolsMenuTest {
 	}
 
 	@Test
-	public void testAddItem() {
+	public void testAddAndRemoveItem() {
 		assertEquals(0, this.tools.getItemCount());
 		assertFalse(this.tools.getItems().containsKey("LabelTest"));
-		this.tools.addItem(new JMenuItem(), "LabelTest");
-		assertEquals(1, this.tools.getItemCount());
-		assertTrue(this.tools.getItems().containsKey("LabelTest"));
-	}
 
-	@Test
-	public void testRemoveItem() {
 		this.tools.addItem(new JMenuItem(), "LabelTest");
 		assertEquals(1, this.tools.getItemCount());
 		assertTrue(this.tools.getItems().containsKey("LabelTest"));
+
 		this.tools.removeItem("LabelTest");
 		assertEquals(0, this.tools.getItemCount());
 		assertFalse(this.tools.getItems().containsKey("LabelTest"));

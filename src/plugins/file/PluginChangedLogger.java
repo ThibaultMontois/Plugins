@@ -13,6 +13,10 @@ public class PluginChangedLogger implements PluginChangedListener {
 		this.frame = frame;
 	}
 
+	public PluginFrame getFrame() {
+		return this.frame;
+	}
+
 	@Override
 	public void addPlugin(PluginChangedEvent event) {
 		Plugin plugin = event.getPlugin();

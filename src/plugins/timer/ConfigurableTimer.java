@@ -18,6 +18,10 @@ public class ConfigurableTimer extends Timer implements ActionListener {
 		this.addActionListener(this);
 	}
 
+	public PluginFinder getFinder() {
+		return this.finder;
+	}
+	
 	public void actionPerformed(ActionEvent actionEvent) {
 		this.finder.checkPlugins();
 	}
