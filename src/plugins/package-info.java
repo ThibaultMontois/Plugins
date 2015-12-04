@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the plugins.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi

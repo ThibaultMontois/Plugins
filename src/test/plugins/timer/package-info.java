@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the timer tests.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi

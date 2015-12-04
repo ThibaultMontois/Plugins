@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the mocks that are using for tests.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi

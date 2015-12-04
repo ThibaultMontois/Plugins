@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the timer.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi

@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the tests for graphical interface and tools menu.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi

@@ -1,5 +1,5 @@
 /**
- * 
+ * Manages the plugins tests.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi
