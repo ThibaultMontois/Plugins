@@ -11,6 +11,12 @@ import java.io.File;
 
 import plugins.file.PluginFilter;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginFilterTest {
 
 	private PluginFilter filter;

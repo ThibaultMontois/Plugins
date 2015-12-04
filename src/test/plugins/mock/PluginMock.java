@@ -2,6 +2,14 @@ package test.plugins.mock;
 
 import plugins.Plugin;
 
+/**
+ * Using for tests.
+ * 
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginMock implements Plugin {
 
 	@Override

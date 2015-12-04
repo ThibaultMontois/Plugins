@@ -10,6 +10,12 @@ import org.junit.Test;
 import plugins.file.PluginFinder;
 import plugins.timer.ConfigurableTimer;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class ConfigurableTimerTest {
 
 	private PluginFinder finder;
@@ -32,11 +38,11 @@ public class ConfigurableTimerTest {
 	@Test
 	public void testActionPerformed() {
 		assertEquals(0, this.finder.getPlugins().size());
-		
+
 		this.timer.actionPerformed(null);
 		assertEquals(1, this.finder.getPlugins().size());
-		
-		this.finder.setDirectory("dropinsTest/empty/");	
+
+		this.finder.setDirectory("dropinsTest/empty/");
 		this.timer.actionPerformed(null);
 		assertEquals(0, this.finder.getPlugins().size());
 	}

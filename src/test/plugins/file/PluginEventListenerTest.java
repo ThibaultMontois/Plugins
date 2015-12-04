@@ -15,6 +15,12 @@ import plugins.file.PluginEventListener;
 import test.plugins.mock.PluginFrameMock;
 import test.plugins.mock.PluginMock;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginEventListenerTest {
 
 	private PluginFrame frame;

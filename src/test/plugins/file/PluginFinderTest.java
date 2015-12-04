@@ -10,6 +10,12 @@ import plugins.file.PluginChangedListener;
 import plugins.file.PluginFinder;
 import test.plugins.mock.ListenerMock;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginFinderTest {
 
 	private int numberOfListeners = 10;

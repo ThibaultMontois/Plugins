@@ -6,12 +6,26 @@ import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**
+ * A PluginFrame is a frame that contains a tools menu and a text area.
+ * 
+ * The text area content can be transform thanks to plugins in relation to the
+ * tools menu items
+ * 
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 @SuppressWarnings("serial")
 public class PluginFrame extends JFrame {
 
 	private ToolsMenu tools;
 	private JTextArea input;
 
+	/**
+	 * Constructs a PluginFrame.
+	 */
 	public PluginFrame() {
 		JScrollPane scrollPane;
 		JMenuBar menu = new JMenuBar();
@@ -33,10 +47,16 @@ public class PluginFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * @return the tools menu
+	 */
 	public ToolsMenu getToolsMenu() {
 		return this.tools;
 	}
 
+	/**
+	 * @return the text area
+	 */
 	public JTextArea getInput() {
 		return this.input;
 	}

@@ -12,6 +12,12 @@ import javax.swing.JMenuItem;
 
 import plugins.editor.ToolsMenu;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class ToolsMenuTest {
 
 	private ToolsMenu tools;

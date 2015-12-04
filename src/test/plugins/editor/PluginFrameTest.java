@@ -8,6 +8,12 @@ import org.junit.Test;
 import plugins.editor.PluginFrame;
 import test.plugins.mock.PluginFrameMock;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginFrameTest {
 
 	private PluginFrame frame;

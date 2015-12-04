@@ -11,6 +11,12 @@ import java.io.File;
 import plugins.Plugin;
 import plugins.file.PluginChangedEvent;
 
+/**
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class PluginChangedEventTest {
 
 	private PluginChangedEvent event;
@@ -19,10 +25,10 @@ public class PluginChangedEventTest {
 	public void createPluginChangedEventWithAPluginSource() {
 		File source = new File("dropinsTest/APlugin.class");
 		assertNotNull(source);
-		
+
 		this.event = new PluginChangedEvent(source);
 		assertNotNull(this.event);
-		
+
 		Plugin plugin = this.event.getPlugin();
 		assertNotNull(plugin);
 		assertEquals("A Plugin", plugin.getLabel());
@@ -30,9 +36,10 @@ public class PluginChangedEventTest {
 
 	@Test
 	public void pluginIsNullWhenCreatingAPluginChangedEventWithoutAPluginSource() {
-		File source = new File("dropinsTest/NotHaveAConstructorWithoutParameters.class");
+		File source = new File(
+				"dropinsTest/NotHaveAConstructorWithoutParameters.class");
 		assertNotNull(source);
-		
+
 		this.event = new PluginChangedEvent(source);
 		assertNotNull(this.event);
 		assertNull(this.event.getPlugin());

@@ -3,6 +3,14 @@ package test.plugins.mock;
 import plugins.file.PluginChangedEvent;
 import plugins.file.PluginChangedListener;
 
+/**
+ * Using for tests.
+ * 
+ * @author Sellenia Chikhoune
+ * @author Mohammed Khomsi
+ * @author Benjamin Lefebvre
+ * @author Thibault Montois
+ */
 public class ListenerMock implements PluginChangedListener {
 
 	private int addedEventsReceived;
