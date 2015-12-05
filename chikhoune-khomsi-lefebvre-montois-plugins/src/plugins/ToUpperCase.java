@@ -1,27 +1,23 @@
 package plugins;
 
 /**
- * Using for tests.
+ * Using to set the input text characters to upper case.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi
  * @author Benjamin Lefebvre
  * @author Thibault Montois
  */
-public class NotHaveAConstructorWithoutParameters implements Plugin {
+public class ToUpperCase implements Plugin {
 
 	/**
-	 * Hidden constructor without parameters.
-	 */
-	private NotHaveAConstructorWithoutParameters() {
-	}
-
-	/**
+	 * Sets all the input text characters to upper case.
+	 * 
 	 * @see plugins.Plugin#transform(String)
 	 */
 	@Override
 	public String transform(String input) {
-		return "I'm not a Plugin";
+		return input.toUpperCase();
 	}
 
 	/**
@@ -29,7 +25,7 @@ public class NotHaveAConstructorWithoutParameters implements Plugin {
 	 */
 	@Override
 	public String getLabel() {
-		return "Not a Plugin";
+		return "To Upper Case";
 	}
 
 }

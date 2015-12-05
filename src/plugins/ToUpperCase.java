@@ -1,7 +1,7 @@
 package plugins;
 
 /**
- * Using to set the input text characters to upper.
+ * Using to set the input text characters to upper case.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi
@@ -11,7 +11,7 @@ package plugins;
 public class ToUpperCase implements Plugin {
 
 	/**
-	 * Sets all the input text characters to upper.
+	 * Sets all the input text characters to upper case.
 	 * 
 	 * @see plugins.Plugin#transform(String)
 	 */
