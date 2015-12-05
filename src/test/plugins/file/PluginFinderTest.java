@@ -26,9 +26,9 @@ public class PluginFinderTest {
 		this.finder = new PluginFinder("dropinsTest/");
 		assertNotNull(this.finder);
 
-		for (int i = 0; i < this.numberOfListeners; i++) {
+		for (int i = 1; i <= this.numberOfListeners; i++) {
 			this.finder.addListener(new ListenerMock());
-			assertEquals(i + 1, this.finder.getListeners().size());
+			assertEquals(i, this.finder.getListeners().size());
 		}
 	}
 

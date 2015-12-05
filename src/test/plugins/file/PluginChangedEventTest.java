@@ -23,10 +23,10 @@ public class PluginChangedEventTest {
 
 	@Test
 	public void createPluginChangedEventWithAPluginSource() {
-		File source = new File("dropinsTest/APlugin.class");
-		assertNotNull(source);
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
 
-		this.event = new PluginChangedEvent(source);
+		this.event = new PluginChangedEvent(this, file);
 		assertNotNull(this.event);
 
 		Plugin plugin = this.event.getPlugin();
@@ -36,10 +36,10 @@ public class PluginChangedEventTest {
 
 	@Test
 	public void pluginIsNullWhenCreatingAPluginChangedEventWithoutAPluginSource() {
-		File source = new File("dropinsTest/NotHasAConstructorWithoutParameters.class");
-		assertNotNull(source);
+		File file = new File("dropinsTest/NotHasAConstructorWithoutParameters.class");
+		assertNotNull(file);
 
-		this.event = new PluginChangedEvent(source);
+		this.event = new PluginChangedEvent(this, file);
 		assertNotNull(this.event);
 		assertNull(this.event.getPlugin());
 	}

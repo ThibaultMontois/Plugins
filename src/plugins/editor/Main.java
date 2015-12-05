@@ -15,7 +15,7 @@ import plugins.timer.ConfigurableTimer;
 public class Main {
 
 	public static void main(String[] args) {
-		PluginFrame frame = new PluginFrame();
+		PluginFrame frame = new PluginFrame(true);
 		PluginChangedLogger pluginsLogger = new PluginChangedLogger(frame);
 		PluginFinder finder = new PluginFinder("dropins/");
 		ConfigurableTimer timer = new ConfigurableTimer(2000, finder);

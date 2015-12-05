@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import plugins.editor.PluginFrame;
-import test.plugins.mock.PluginFrameMock;
 
 /**
  * @author Sellenia Chikhoune
@@ -20,7 +19,7 @@ public class PluginFrameTest {
 
 	@Before
 	public void createPluginFrame() {
-		this.frame = new PluginFrameMock();
+		this.frame = new PluginFrame(false);
 		assertNotNull(this.frame);
 	}
 

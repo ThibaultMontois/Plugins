@@ -113,7 +113,7 @@ public class PluginFinder {
 	 *            the founded plugin.
 	 */
 	private void firePluginAdded(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		PluginChangedEvent event = new PluginChangedEvent(this, plugin);
 		for (PluginChangedListener listener : this.listeners)
 			listener.addPlugin(event);
 	}
@@ -125,7 +125,7 @@ public class PluginFinder {
 	 *            the missing plugin
 	 */
 	private void firePluginRemoved(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(plugin);
+		PluginChangedEvent event = new PluginChangedEvent(this, plugin);
 		for (PluginChangedListener listener : this.listeners)
 			listener.removePlugin(event);
 	}

@@ -12,7 +12,6 @@ import org.junit.Test;
 import plugins.Plugin;
 import plugins.editor.PluginFrame;
 import plugins.file.PluginEventListener;
-import test.plugins.mock.PluginFrameMock;
 import test.plugins.mock.PluginMock;
 
 /**
@@ -29,7 +28,7 @@ public class PluginEventListenerTest {
 
 	@Before
 	public void createPluginEventListener() {
-		this.frame = new PluginFrameMock();
+		this.frame = new PluginFrame(false);
 		assertNotNull(this.frame);
 
 		this.plugin = new PluginMock();

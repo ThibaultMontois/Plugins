@@ -24,9 +24,13 @@ public class PluginFrame extends JFrame {
 	private JTextArea input;
 
 	/**
-	 * Constructs a PluginFrame.
+	 * Constructs a PluginFrame with given visibility.
+	 * 
+	 * @param visible
+	 *            true to make the frame visible, else false
 	 */
-	public PluginFrame() {
+	public PluginFrame(boolean visible) {
+		super("Extendable Editor");
 		JScrollPane scrollPane;
 		JMenuBar menu = new JMenuBar();
 
@@ -39,11 +43,10 @@ public class PluginFrame extends JFrame {
 		scrollPane = new JScrollPane(this.input);
 
 		this.setSize(500, 250);
-		this.setTitle("Extendable Editor");
 		this.setJMenuBar(menu);
 		this.add(scrollPane);
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		this.setVisible(visible);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 

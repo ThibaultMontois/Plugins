@@ -15,7 +15,6 @@ import plugins.editor.PluginFrame;
 import plugins.editor.ToolsMenu;
 import plugins.file.PluginChangedEvent;
 import plugins.file.PluginChangedLogger;
-import test.plugins.mock.PluginFrameMock;
 
 /**
  * @author Sellenia Chikhoune
@@ -30,7 +29,7 @@ public class PluginChangedLoggerTest {
 
 	@Before
 	public void createPluginChangedLogger() {
-		this.frame = new PluginFrameMock();
+		this.frame = new PluginFrame(false);
 		assertNotNull(this.frame);
 
 		this.logger = new PluginChangedLogger(frame);
@@ -48,10 +47,10 @@ public class PluginChangedLoggerTest {
 		assertEquals(0, tools.getItemCount());
 		assertFalse(tools.getItems().containsKey("A Plugin"));
 
-		File source = new File("dropinsTest/APlugin.class");
-		assertNotNull(source);
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
 
-		PluginChangedEvent event = new PluginChangedEvent(source);
+		PluginChangedEvent event = new PluginChangedEvent(this, file);
 		assertNotNull(event);
 
 		this.logger.addPlugin(event);

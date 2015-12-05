@@ -1,6 +1,7 @@
 package plugins.file;
 
 import java.io.File;
+import java.util.EventObject;
 
 import plugins.Plugin;
 
@@ -15,12 +16,14 @@ import plugins.Plugin;
  * @author Benjamin Lefebvre
  * @author Thibault Montois
  */
-public class PluginChangedEvent {
+@SuppressWarnings("serial")
+public class PluginChangedEvent extends EventObject {
 
 	private Plugin plugin;
 
-	public PluginChangedEvent(File source) {
-		this.plugin = this.toPlugin(source);
+	public PluginChangedEvent(Object source, File file) {
+		super(source);
+		this.plugin = this.toPlugin(file);
 	}
 
 	/**
@@ -33,13 +36,13 @@ public class PluginChangedEvent {
 	/**
 	 * Creates a plugin from a source file.
 	 * 
-	 * @param source
+	 * @param file
 	 *            the file using to create a plugin
 	 * @return the plugin instance corresponding to the source file, null if
 	 *         this source file doesn't correspond to a plugin
 	 */
-	private Plugin toPlugin(File source) {
-		String filename = source.getName();
+	private Plugin toPlugin(File file) {
+		String filename = file.getName();
 		filename = filename.substring(0, filename.indexOf(".class"));
 		Class<?> classFile;
 		try {

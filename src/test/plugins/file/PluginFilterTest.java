@@ -29,25 +29,25 @@ public class PluginFilterTest {
 
 	@Test
 	public void testAccept() {
-		File source = new File("dropinsTest/APlugin.class");
-		assertNotNull(source);
-		assertTrue(this.filter.accept(null, source.getName()));
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
+		assertTrue(this.filter.accept(null, file.getName()));
 
-		source = new File("dropinsTest/NotAClassFile");
-		assertNotNull(source);
-		assertFalse(this.filter.accept(null, source.getName()));
+		file = new File("dropinsTest/NotAClassFile");
+		assertNotNull(file);
+		assertFalse(this.filter.accept(null, file.getName()));
 
-		source = new File("dropinsTest/NotInPluginsPackage.class");
-		assertNotNull(source);
-		assertFalse(this.filter.accept(null, source.getName()));
+		file = new File("dropinsTest/NotInPluginsPackage.class");
+		assertNotNull(file);
+		assertFalse(this.filter.accept(null, file.getName()));
 		
-		source = new File("dropinsTest/NotImplementsPlugin.class");
-		assertNotNull(source);
-		assertFalse(this.filter.accept(null, source.getName()));
+		file = new File("dropinsTest/NotImplementsPlugin.class");
+		assertNotNull(file);
+		assertFalse(this.filter.accept(null, file.getName()));
 
-		source = new File("dropinsTest/NotHasAConstructorWithoutParameters.class");
-		assertNotNull(source);
-		assertFalse(this.filter.accept(null, source.getName()));
+		file = new File("dropinsTest/NotHasAConstructorWithoutParameters.class");
+		assertNotNull(file);
+		assertFalse(this.filter.accept(null, file.getName()));
 	}
 
 }
