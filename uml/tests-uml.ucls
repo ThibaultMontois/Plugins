@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="test.plugins.file.PluginChangedEventTest" project="Plugins" 
     file="/Plugins/src/test/plugins/file/PluginChangedEventTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="734" y="484"/>    
+    <position height="-1" width="-1" x="814" y="162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="test.plugins.ToUpperCaseTest" project="Plugins" 
     file="/Plugins/src/test/plugins/ToUpperCaseTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1066" y="507"/>    
+    <position height="-1" width="-1" x="1045" y="468"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="test.plugins.DeleteVowelsTest" project="Plugins" 
     file="/Plugins/src/test/plugins/DeleteVowelsTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1267" y="403"/>    
+    <position height="-1" width="-1" x="1261" y="480"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="test.plugins.editor.PluginFrameTest" project="Plugins" 
     file="/Plugins/src/test/plugins/editor/PluginFrameTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="110" y="153"/>    
+    <position height="-1" width="-1" x="95" y="231"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="test.plugins.file.PluginChangedLoggerTest" project="Plugins" 
     file="/Plugins/src/test/plugins/file/PluginChangedLoggerTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="792" y="264"/>    
+    <position height="-1" width="-1" x="788" y="417"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="test.plugins.file.PluginFilterTest" project="Plugins" 
     file="/Plugins/src/test/plugins/file/PluginFilterTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="573" y="127"/>    
+    <position height="-1" width="-1" x="489" y="189"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="test.plugins.editor.ToolsMenuTest" project="Plugins" 
     file="/Plugins/src/test/plugins/editor/ToolsMenuTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="113" y="388"/>    
+    <position height="-1" width="-1" x="529" y="423"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="test.plugins.file.PluginFinderTest" project="Plugins" 
     file="/Plugins/src/test/plugins/file/PluginFinderTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="388" y="389"/>    
+    <position height="-1" width="-1" x="264" y="454"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="test.plugins.ToLowerCaseTest" project="Plugins" 
     file="/Plugins/src/test/plugins/ToLowerCaseTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1287" y="184"/>    
+    <position height="-1" width="-1" x="1376" y="296"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="test.plugins.file.PluginEventListenerTest" project="Plugins" 
     file="/Plugins/src/test/plugins/file/PluginEventListenerTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1031" y="126"/>    
+    <position height="-1" width="-1" x="1163" y="109"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="test.plugins.timer.ConfigurableTimerTest" project="Plugins" 
     file="/Plugins/src/test/plugins/timer/ConfigurableTimerTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="334" y="116"/>    
+    <position height="-1" width="-1" x="299" y="100"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

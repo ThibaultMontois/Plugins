@@ -1,7 +1,9 @@
 package test.plugins.file;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +37,7 @@ public class PluginFinderTest {
 	@Test
 	public void testGetAndSetDirectory() {
 		assertEquals("dropinsTest", this.finder.getDirectory().getPath());
-		
+
 		this.finder.setDirectory("dropins/");
 		assertEquals("dropins", this.finder.getDirectory().getPath());
 	}
@@ -53,14 +55,23 @@ public class PluginFinderTest {
 	}
 
 	@Test
-	public void testCheckPlugins() {
+	public void testRemoveListener() {
+		PluginChangedListener listener = this.finder.getListeners().get(0);
+		assertTrue(this.finder.getListeners().contains(listener));
+
+		this.finder.removeListener(listener);
+		assertFalse(this.finder.getListeners().contains(listener));
+	}
+
+	@Test
+	public void testCheckFiles() {
 		assertEquals(0, this.finder.getPlugins().size());
-		
-		this.finder.checkPlugins();
+
+		this.finder.checkFiles();
 		assertEquals(1, this.finder.getPlugins().size());
-		
+
 		this.finder.setDirectory("dropinsTest/empty/");
-		this.finder.checkPlugins();
+		this.finder.checkFiles();
 		assertEquals(0, this.finder.getPlugins().size());
 	}
 
@@ -77,19 +88,19 @@ public class PluginFinderTest {
 		for (int i = 1; i <= 1001; i++) {
 			this.finder.setDirectory("dropinsTest/");
 
-			this.finder.checkPlugins();
+			this.finder.checkFiles();
 			for (PluginChangedListener listener : this.finder.getListeners()) {
 				assertEquals(i, ((ListenerMock) listener).getAddedEventsReceived());
 			}
 
-			this.finder.checkPlugins();
+			this.finder.checkFiles();
 			for (PluginChangedListener listener : this.finder.getListeners()) {
 				assertEquals(i, ((ListenerMock) listener).getAddedEventsReceived());
 			}
 
 			this.finder.setDirectory("dropinsTest/empty/");
 
-			this.finder.checkPlugins();
+			this.finder.checkFiles();
 			for (PluginChangedListener listener : this.finder.getListeners()) {
 				assertEquals(i, ((ListenerMock) listener).getRemovedEventsReceived());
 			}

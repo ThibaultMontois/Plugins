@@ -6,6 +6,10 @@ import java.util.Map;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import plugins.Plugin;
+import plugins.file.PluginChangedEvent;
+import plugins.file.PluginChangedListener;
+
 /**
  * A ToolsMenu is a menu using to add and remove items related plugins.
  * 
@@ -15,7 +19,7 @@ import javax.swing.JMenuItem;
  * @author Thibault Montois
  */
 @SuppressWarnings("serial")
-public class ToolsMenu extends JMenu {
+public class ToolsMenu extends JMenu implements PluginChangedListener {
 
 	private Map<String, JMenuItem> items;
 
@@ -40,25 +44,33 @@ public class ToolsMenu extends JMenu {
 	/**
 	 * Adds an item to the tools menu.
 	 * 
-	 * @param item
-	 *            the item to add
-	 * @param label
-	 *            the item's label
+	 * @see plugins.file.PluginChangedListener#addPlugin(plugins.file.PluginChangedEvent)
 	 */
-	public void addItem(JMenuItem item, String label) {
-		this.items.put(label, item);
-		this.add(item);
+	@Override
+	public void addPlugin(PluginChangedEvent event) {
+		JMenuItem item = null;
+		Plugin plugin = event.getPlugin();
+		if (plugin != null)
+			item = event.getItem();
+		if (item != null) {
+			this.items.put(plugin.getLabel(), item);
+			this.add(item);
+		}
 	}
 
 	/**
 	 * Removes an item from the tools menu.
 	 * 
-	 * @param label
-	 *            the item's label
+	 * @see plugins.file.PluginChangedListener#removePlugin(plugins.file.PluginChangedEvent)
 	 */
-	public void removeItem(String label) {
-		JMenuItem item = this.items.remove(label);
-		this.remove(item);
+	@Override
+	public void removePlugin(PluginChangedEvent event) {
+		JMenuItem item;
+		Plugin plugin = event.getPlugin();
+		if (plugin != null) {
+			item = this.items.remove(plugin.getLabel());
+			this.remove(item);
+		}
 	}
 
 }

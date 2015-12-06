@@ -12,7 +12,7 @@ import java.util.List;
  * @author Benjamin Lefebvre
  * @author Thibault Montois
  */
-public class PluginFinder {
+public class PluginFinder implements Finder {
 
 	private File directory;
 	private PluginFilter filter;
@@ -74,16 +74,28 @@ public class PluginFinder {
 	}
 
 	/**
-	 * Search for added or removed plugins.
+	 * Removes a given listener from the listeners list.
+	 * 
+	 * @param listener
+	 *            the listener to remove
 	 */
-	public void checkPlugins() {
+	public void removeListener(PluginChangedListener listener) {
+		this.listeners.remove(listener);
+	}
+
+	/**
+	 * Search for added or removed plugins.
+	 * 
+	 * @see plugins.file.Finder#checkFiles()
+	 */
+	public void checkFiles() {
 		File[] plugins = this.directory.listFiles(this.filter);
 		if (plugins != null)
 			this.handlePlugins(plugins);
 	}
 
 	/**
-	 * Adds and removes plugins.
+	 * Adds and removes files.
 	 * 
 	 * Can fire PluginChangedEvents to the listeners
 	 * 
@@ -107,25 +119,25 @@ public class PluginFinder {
 	}
 
 	/**
-	 * Fire PluginChangedEvent to the listeners when a new plugin is found.
+	 * Fire a PluginChangedEvent to the listeners when a new plugin is found.
 	 * 
 	 * @param plugin
 	 *            the founded plugin.
 	 */
 	private void firePluginAdded(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(this, plugin);
+		PluginChangedEvent event = new PluginChangedEvent(this, plugin, true);
 		for (PluginChangedListener listener : this.listeners)
 			listener.addPlugin(event);
 	}
 
 	/**
-	 * Fire PluginChangedEvent to the listeners when a plugin disappears.
+	 * Fire a PluginChangedEvent to the listeners when a plugin is missing.
 	 * 
 	 * @param plugin
 	 *            the missing plugin
 	 */
 	private void firePluginRemoved(File plugin) {
-		PluginChangedEvent event = new PluginChangedEvent(this, plugin);
+		PluginChangedEvent event = new PluginChangedEvent(this, plugin, false);
 		for (PluginChangedListener listener : this.listeners)
 			listener.removePlugin(event);
 	}

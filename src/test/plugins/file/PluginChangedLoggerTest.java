@@ -1,10 +1,8 @@
 package test.plugins.file;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
@@ -12,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import plugins.editor.PluginFrame;
-import plugins.editor.ToolsMenu;
 import plugins.file.PluginChangedEvent;
 import plugins.file.PluginChangedLogger;
 
@@ -43,25 +40,20 @@ public class PluginChangedLoggerTest {
 
 	@Test
 	public void testAddAndRemovePlugin() {
-		ToolsMenu tools = this.frame.getToolsMenu();
-		assertEquals(0, tools.getItemCount());
-		assertFalse(tools.getItems().containsKey("A Plugin"));
-
 		File file = new File("dropinsTest/APlugin.class");
 		assertNotNull(file);
 
-		PluginChangedEvent event = new PluginChangedEvent(this, file);
+		PluginChangedEvent event = new PluginChangedEvent(this, file, true);
 		assertNotNull(event);
+		assertNotNull(event.getPlugin());
+		assertNotNull(event.getItem());
+		assertEquals(0, event.getItem().getActionListeners().length);
 
 		this.logger.addPlugin(event);
-		assertEquals(1, tools.getItemCount());
-		assertTrue(tools.getItems().containsKey("A Plugin"));
-		assertEquals(1,
-				tools.getItems().get("A Plugin").getActionListeners().length);
+		assertEquals(1, event.getItem().getActionListeners().length);
 
 		this.logger.removePlugin(event);
-		assertEquals(0, tools.getItemCount());
-		assertFalse(tools.getItems().containsKey("A Plugin"));
+		assertEquals(0, event.getItem().getActionListeners().length);
 	}
 
 }

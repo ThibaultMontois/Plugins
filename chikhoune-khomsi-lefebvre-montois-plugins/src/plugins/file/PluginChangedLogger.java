@@ -1,5 +1,8 @@
 package plugins.file;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JMenuItem;
 
 import plugins.Plugin;
@@ -19,6 +22,7 @@ import plugins.editor.PluginFrame;
 public class PluginChangedLogger implements PluginChangedListener {
 
 	private PluginFrame frame;
+	private Map<String, JMenuItem> items;
 
 	/**
 	 * Constructs a PluginChangedLogger with given frame.
@@ -28,6 +32,7 @@ public class PluginChangedLogger implements PluginChangedListener {
 	 */
 	public PluginChangedLogger(PluginFrame frame) {
 		this.frame = frame;
+		this.items = new HashMap<String, JMenuItem>();
 	}
 
 	/**
@@ -38,33 +43,36 @@ public class PluginChangedLogger implements PluginChangedListener {
 	}
 
 	/**
-	 * Creates a JMenuItem from the plugin contained in the given event, adds an
-	 * action to this item and transmits it to the tools menu so that it can be
-	 * added.
+	 * Gets the item contains in the given event and adds an action listener to
+	 * it.
 	 * 
 	 * @see plugins.file.PluginChangedListener#addPlugin(plugins.file.PluginChangedEvent)
 	 */
 	@Override
 	public void addPlugin(PluginChangedEvent event) {
+		JMenuItem item = null;
 		Plugin plugin = event.getPlugin();
-		if (plugin != null) {
-			JMenuItem item = new JMenuItem(plugin.getLabel());
+		if (plugin != null)
+			item = event.getItem();
+		if (item != null) {
 			item.addActionListener(new PluginEventListener(this.frame, plugin));
-			this.frame.getToolsMenu().addItem(item, plugin.getLabel());
+			this.items.put(plugin.getLabel(), item);
 		}
 	}
 
 	/**
-	 * Gets the plugin contained in the given event and transmits its label to
-	 * the tools menu so that it can be removed.
+	 * Removes the action listener from the item contains in the given event.
 	 * 
 	 * @see plugins.file.PluginChangedListener#removePlugin(plugins.file.PluginChangedEvent)
 	 */
 	@Override
 	public void removePlugin(PluginChangedEvent event) {
+		JMenuItem item;
 		Plugin plugin = event.getPlugin();
-		if (plugin != null)
-			this.frame.getToolsMenu().removeItem(plugin.getLabel());
+		if (plugin != null) {
+			item = this.items.remove(plugin.getLabel());
+			item.removeActionListener(item.getActionListeners()[0]);
+		}
 	}
 
 }

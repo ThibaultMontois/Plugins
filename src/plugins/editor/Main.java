@@ -1,7 +1,7 @@
 package plugins.editor;
 
-import plugins.file.PluginFinder;
 import plugins.file.PluginChangedLogger;
+import plugins.file.PluginFinder;
 import plugins.timer.ConfigurableTimer;
 
 /**
@@ -18,8 +18,10 @@ public class Main {
 		PluginFrame frame = new PluginFrame(true);
 		PluginChangedLogger pluginsLogger = new PluginChangedLogger(frame);
 		PluginFinder finder = new PluginFinder("dropins/");
-		ConfigurableTimer timer = new ConfigurableTimer(2000, finder);
+		ConfigurableTimer timer = new ConfigurableTimer(2000);
 		finder.addListener(pluginsLogger);
+		finder.addListener(frame.getToolsMenu());
+		timer.addFinder(finder);
 		timer.start();
 	}
 

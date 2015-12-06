@@ -1,13 +1,13 @@
 package test.plugins.file;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+
+import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.File;
 
 import plugins.file.PluginFilter;
 

@@ -1,16 +1,17 @@
 package test.plugins.editor;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.JMenuItem;
-
 import plugins.editor.ToolsMenu;
+import plugins.file.PluginChangedEvent;
 
 /**
  * @author Sellenia Chikhoune
@@ -34,17 +35,25 @@ public class ToolsMenuTest {
 	}
 
 	@Test
-	public void testAddAndRemoveItem() {
-		assertEquals(0, this.tools.getItemCount());
-		assertFalse(this.tools.getItems().containsKey("LabelTest"));
+	public void testAddAndRemovePlugin() {
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
 
-		this.tools.addItem(new JMenuItem(), "LabelTest");
+		PluginChangedEvent event = new PluginChangedEvent(this, file, true);
+		assertNotNull(event);
+		assertNotNull(event.getPlugin());
+		assertNotNull(event.getItem());
+
+		assertEquals(0, this.tools.getItemCount());
+		assertFalse(this.tools.getItems().containsKey("A PLugin"));
+
+		this.tools.addPlugin(event);
 		assertEquals(1, this.tools.getItemCount());
-		assertTrue(this.tools.getItems().containsKey("LabelTest"));
+		assertTrue(this.tools.getItems().containsKey("A Plugin"));
 
-		this.tools.removeItem("LabelTest");
+		this.tools.removePlugin(event);
 		assertEquals(0, this.tools.getItemCount());
-		assertFalse(this.tools.getItems().containsKey("LabelTest"));
+		assertFalse(this.tools.getItems().containsKey("A Plugin"));
 	}
 
 }

@@ -1,12 +1,14 @@
 package test.plugins.file;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
-
 import java.io.File;
+
+import javax.swing.JMenuItem;
+
+import org.junit.Test;
 
 import plugins.Plugin;
 import plugins.file.PluginChangedEvent;
@@ -26,7 +28,7 @@ public class PluginChangedEventTest {
 		File file = new File("dropinsTest/APlugin.class");
 		assertNotNull(file);
 
-		this.event = new PluginChangedEvent(this, file);
+		this.event = new PluginChangedEvent(this, file, true);
 		assertNotNull(this.event);
 
 		Plugin plugin = this.event.getPlugin();
@@ -36,12 +38,37 @@ public class PluginChangedEventTest {
 
 	@Test
 	public void pluginIsNullWhenCreatingAPluginChangedEventWithoutAPluginSource() {
-		File file = new File("dropinsTest/NotHasAConstructorWithoutParameters.class");
+		File file = new File(
+				"dropinsTest/NotHasAConstructorWithoutParameters.class");
 		assertNotNull(file);
 
-		this.event = new PluginChangedEvent(this, file);
+		this.event = new PluginChangedEvent(this, file, false);
 		assertNotNull(this.event);
 		assertNull(this.event.getPlugin());
+	}
+
+	@Test
+	public void createAJMenuItemWhenAddEventIsTrue() {
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
+
+		this.event = new PluginChangedEvent(this, file, true);
+		assertNotNull(this.event);
+
+		JMenuItem item = this.event.getItem();
+		assertNotNull(item);
+	}
+
+	@Test
+	public void notCreateAJMenuItemWhenAddEventIsFalse() {
+		File file = new File("dropinsTest/APlugin.class");
+		assertNotNull(file);
+
+		this.event = new PluginChangedEvent(this, file, false);
+		assertNotNull(this.event);
+
+		JMenuItem item = this.event.getItem();
+		assertNull(item);
 	}
 
 }

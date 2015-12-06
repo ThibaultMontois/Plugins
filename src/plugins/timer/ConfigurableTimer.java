@@ -2,14 +2,16 @@ package plugins.timer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.Timer;
 
-import plugins.file.PluginFinder;
+import plugins.file.Finder;
 
 /**
- * A ConfigurableTimer is a timer that executes regularly the checkPlugins
- * method of a given plugin finder.
+ * A ConfigurableTimer is a timer that executes regularly the checkFiles
+ * method of a given finder.
  * 
  * @author Sellenia Chikhoune
  * @author Mohammed Khomsi
@@ -19,36 +21,55 @@ import plugins.file.PluginFinder;
 @SuppressWarnings("serial")
 public class ConfigurableTimer extends Timer implements ActionListener {
 
-	private PluginFinder finder;
+	private List<Finder> finders;
 
 	/**
-	 * Constructs a ConfigurableTimer with given delay and plugin finder.
+	 * Constructs a ConfigurableTimer with given delay.
 	 * 
 	 * @param delay
 	 *            the delay of recovery of the method actionPerformed
-	 * @param finder
-	 *            the plugin finder
 	 */
-	public ConfigurableTimer(int delay, PluginFinder finder) {
+	public ConfigurableTimer(int delay) {
 		super(delay, null);
-		this.finder = finder;
+		this.finders = new LinkedList<Finder>();
 		this.addActionListener(this);
 	}
 
 	/**
-	 * @return the plugin finder
+	 * @return the finders list
 	 */
-	public PluginFinder getFinder() {
-		return this.finder;
+	public List<Finder> getFinders() {
+		return this.finders;
 	}
 
 	/**
-	 * Executes the checkPlugins method of the plugin finder.
+	 * Adds a finder to the finders list.
+	 * 
+	 * @param finder
+	 *            the finder to add
+	 */
+	public void addFinder(Finder finder) {
+		this.finders.add(finder);
+	}
+
+	/**
+	 * Removes a finder from the finders list.
+	 * 
+	 * @param finder
+	 *            the finder to remove
+	 */
+	public void removeFinder(Finder finder) {
+		this.finders.remove(finder);
+	}
+
+	/**
+	 * Executes the checkFiles method of all the finders.
 	 * 
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent actionEvent) {
-		this.finder.checkPlugins();
+		for (Finder finder : this.finders)
+			finder.checkFiles();
 	}
 
 }
