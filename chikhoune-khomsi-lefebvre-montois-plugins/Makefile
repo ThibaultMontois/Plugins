@@ -14,26 +14,42 @@ DIR = ../doc plugins
 # le classpath à utiliser
 CLASSPATH = ../junit.jar:.
 
-# toutes les tâches
-all: clean docs compile jar
+# Les plugins
+PLUGINS = ToUpperCase.class ToLowerCase.class DeleteVowels.class
+# Les "plugins" pour les tests
+TESTPLUGINS = APlugin.class NotImplementsPlugin.class NotHasAConstructorWithoutParameters.class
 
-#compilation des sources	
+# toutes les tâches
+all: clean docs compile directories jar
+
+# compilation des sources	
 compile: 
+	mkdir bin
 	cd src ; javac -classpath $(CLASSPATH) $(SOURCES) -d ../bin
 
-#création du jar
+# génération de la doc	
+docs:
+	mkdir doc
+	cd src ; javadoc $(PACKAGES) -d ../doc
+
+# création des répertoires dropins et dropinsTest
+directories:
+	mkdir -p dropins dropinsTest/empty
+	cd bin/plugins ; cp $(PLUGINS) ../../dropins ; cp $(TESTPLUGINS) ../../dropinsTest
+	cd bin/test/plugins ; cp NotInPluginsPackage.class ../../../dropinsTest
+	cd dropinsTest ; > NotAClassFile
+
+# création du jar
 jar: 
 	cd bin ; jar cvfm ../$(JAR_NAME) ../$(MANIFEST) $(DIR)
 
-#génération de la doc	
-docs:
-	cd src ; javadoc $(PACKAGES) -d ../doc
-
-#exécution du jar
+# exécution du jar
 run: 
 	@java -jar $(JAR_NAME)
 
-#nettoyage bin et doc
+# nettoyage bin et doc
 clean: 
-	rm -f -r bin ; mkdir bin
-	rm -f -r doc ; mkdir doc
+	rm -f -r bin
+	rm -f -r doc
+	rm -f -r dropins
+	rm -f -r dropinsTest
