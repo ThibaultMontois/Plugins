@@ -9,14 +9,18 @@ package plugins;
 public class NotImplementsPlugin {
 
 	/**
-	 * @see plugins.Plugin#transform(String)
+	 * Transforms the input text.
+	 * 
+	 * @param input
+	 *            the text to transform
+	 * @return the transformed text
 	 */
 	public String transform(String input) {
 		return "I'm not a Plugin";
 	}
 
 	/**
-	 * @see plugins.Plugin#getLabel()
+	 * @return the plugin's label
 	 */
 	public String getLabel() {
 		return "Not a Plugin";
