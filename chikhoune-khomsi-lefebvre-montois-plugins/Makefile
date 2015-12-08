@@ -1,5 +1,5 @@
 # cibles qui ne sont pas des fichiers (évite conflit avec les éventuels fichiers de même nom)
-.PHONY: clean, docs, compile, jar, run
+.PHONY: clean, compile, docs, directories, jar, run
 
 # variables à redéfinir pour chaque applications
 SOURCES = plugins/*.java plugins/*/*.java test/plugins/*.java test/plugins/*/*.java
